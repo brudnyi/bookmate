@@ -20,9 +20,7 @@ class PDFDispatcher:
                 content=cleaned_data,
                 user_id=user_id
             )
-            breakpoint()
             document.save()
-            breakpoint()
 
             return {"status": "success", "message": f"PDF {file_path} обработан и сохранен"}
         except Exception as e:

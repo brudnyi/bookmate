@@ -17,7 +17,12 @@ class MongoDatabaseConnector:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             try:
-                cls._client = MongoClient(settings.MONGO_DATABASE_HOST)
+                cls._client = MongoClient(
+                    settings.MONGO_DATABASE_HOST,
+                    settings.MONGO_DATABASE_PORT,
+                    username=settings.MONGO_ROOT_USERNAME,
+                    password=settings.MONGO_ROOT_PASSWORD,
+                )
                 logger.info(
                     f"Connection to database with uri: {settings.MONGO_DATABASE_HOST} successful"
                 )

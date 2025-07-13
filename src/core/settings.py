@@ -4,15 +4,15 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ROOT_DIR = str(Path(__file__).parent.parent.parent)
 
-
 class AppSettings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=ROOT_DIR, env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(env_file=f"{ROOT_DIR}/.env", env_file_encoding="utf-8")
 
     # MongoDB configs
-    MONGO_DATABASE_HOST: str = (
-        "mongodb://mongo1:30001,mongo2:30002,mongo3:30003/?replicaSet=my-replica-set"
-    )
-    MONGO_DATABASE_NAME: str = "twin"
+    MONGO_DATABASE_HOST: str = "mongodb://mongo:30001"
+    MONGO_DATABASE_NAME: str = "bookmate"
+    MONGO_DATABASE_PORT: int = 27017
+    MONGO_ROOT_USERNAME: str = "admin"
+    MONGO_ROOT_PASSWORD: str = "password"
 
     # MQ config
     RABBITMQ_DEFAULT_USERNAME: str = "guest"
