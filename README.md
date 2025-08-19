@@ -1,59 +1,51 @@
 # BookMate
 
-PDF processing application with MongoDB storage.
+Приложение для обработки PDF-файлов с сохранением данных в MongoDB.
 
-## Quick Start
+## Быстрый старт
 
-### 1. Setup Environment
+### 1. Настройка окружения
 
-Copy environment variables:
-```bash
-cp env.example .env
-```
+Скопируйте файл с переменными окружения:
 
-### 2. Start MongoDB
+    cp env.example .env
 
-```bash
-docker-compose up -d
-```
+### 2. Запуск MongoDB
 
-This will start a MongoDB replica set with 3 nodes on ports 30001, 30002, 30003.
+    docker-compose up -d
 
-### 3. Run Application
+Это запустит реплика-сет MongoDB из 3 узлов на портах 30001, 30002 и 30003.
 
-```bash
-# Install dependencies
-uv sync
+### 3. Запуск приложения
 
-# Process a PDF file
-python main.py path/to/your/file.pdf [user_id]
-```
+    # Установите зависимости
+    uv sync
 
-## Development
+    # Обработать PDF-файл
+    python main.py path/to/your/file.pdf [user_id]
 
-### MongoDB Connection
+## Разработка
 
-The application connects to MongoDB replica set:
-- **Host**: `mongo1:30001,mongo2:30002,mongo3:30003`
-- **Database**: `twin`
+### Подключение к MongoDB
+
+Приложение подключается к реплика-сету MongoDB:
+- **Хост**: `mongo1:30001,mongo2:30002,mongo3:30003`
+- **База данных**: `twin`
 - **Replica Set**: `my-replica-set`
 
-### Local Development
+### Локальная разработка
 
-For local development, uncomment the localhost line in `.env`:
-```
-MONGO_DATABASE_HOST=mongodb://localhost:30001,localhost:30002,localhost:30003/?replicaSet=my-replica-set
-```
+Для локальной разработки раскомментируйте строку с localhost в файле `.env`:
 
-## Usage
+    MONGO_DATABASE_HOST=mongodb://localhost:30001,localhost:30002,localhost:30003/?replicaSet=my-replica-set
 
-```bash
-# Basic usage
-python main.py document.pdf
+## Использование
 
-# With custom user ID
-python main.py document.pdf user123
+    # Базовое использование
+    python main.py document.pdf
 
-# Help
-python main.py --help
-```
+    # С указанием пользовательского ID
+    python main.py document.pdf user123
+
+    # Показать справку
+    python main.py --help
