@@ -1,59 +1,58 @@
 # BookMate
 
-PDF processing application with MongoDB storage.
+Приложение для обработки PDF-файлов с хранением в MongoDB.
 
-## Quick Start
+## Быстрый старт
 
-### 1. Setup Environment
+### 1. Настройка окружения
 
-Copy environment variables:
+Скопируйте переменные окружения:
 ```bash
 cp env.example .env
 ```
 
-### 2. Start MongoDB
+### 2. Запуск MongoDB
 
 ```bash
 docker-compose up -d
 ```
 
-This will start a MongoDB replica set with 3 nodes on ports 30001, 30002, 30003.
+Это запустит MongoDB replica set с 3 нодами на портах 30001, 30002, 30003.
 
-### 3. Run Application
+### 3. Запуск приложения
 
 ```bash
-# Install dependencies
+# Установка зависимостей
 uv sync
 
-# Process a PDF file
+# Обработка PDF-файла
 python main.py path/to/your/file.pdf [user_id]
 ```
 
-## Development
+## Разработка
 
-### MongoDB Connection
+### Подключение к MongoDB
 
-The application connects to MongoDB replica set:
-- **Host**: `mongo1:30001,mongo2:30002,mongo3:30003`
-- **Database**: `twin`
-- **Replica Set**: `my-replica-set`
+Приложение подключается к MongoDB replica set:
+- **Хост**: `mongo1:30001,mongo2:30002,mongo3:30003`
+- **База данных**: `twin`
+- **Реплика-сет**: `my-replica-set`
 
-### Local Development
+### Локальная разработка
 
-For local development, uncomment the localhost line in `.env`:
+Для локальной разработки раскомментируйте строку с localhost в `.env`:
 ```
 MONGO_DATABASE_HOST=mongodb://localhost:30001,localhost:30002,localhost:30003/?replicaSet=my-replica-set
 ```
 
-## Usage
+## Использование
 
 ```bash
-# Basic usage
+# Базовое использование
 python main.py document.pdf
 
-# With custom user ID
+# С пользовательским ID
 python main.py document.pdf user123
 
-# Help
+# Помощь
 python main.py --help
-```
